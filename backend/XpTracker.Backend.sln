@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.28516.95
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpTracker.Backend.RestApi", "XpTracker.Backend.RestApi\XpTracker.Backend.RestApi.csproj", "{0193B483-50C7-44CB-B160-B76CAAC8C2FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpTracker.Backend.Core", "XpTracker.Backend.Core\XpTracker.Backend.Core.csproj", "{1FBF9532-BF14-4351-8AE9-77F6BA8F2551}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpTracker.Backend.Tests", "XpTracker.Backend.Tests\XpTracker.Backend.Tests.csproj", "{7CF327B7-8C21-43A1-8578-8A73CB5658FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0193B483-50C7-44CB-B160-B76CAAC8C2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0193B483-50C7-44CB-B160-B76CAAC8C2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0193B483-50C7-44CB-B160-B76CAAC8C2FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FBF9532-BF14-4351-8AE9-77F6BA8F2551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBF9532-BF14-4351-8AE9-77F6BA8F2551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBF9532-BF14-4351-8AE9-77F6BA8F2551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBF9532-BF14-4351-8AE9-77F6BA8F2551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CF327B7-8C21-43A1-8578-8A73CB5658FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF327B7-8C21-43A1-8578-8A73CB5658FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF327B7-8C21-43A1-8578-8A73CB5658FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF327B7-8C21-43A1-8578-8A73CB5658FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

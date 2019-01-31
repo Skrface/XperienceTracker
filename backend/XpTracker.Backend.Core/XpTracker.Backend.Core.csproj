@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="DataMapper\" />
+    <Folder Include="DI\" />
+    <Folder Include="Dto\" />
+    <Folder Include="Fakes\" />
+    <Folder Include="Model\Common\" />
+    <Folder Include="Repo\Common\" />
+    <Folder Include="Service\BusinessServices\" />
+    <Folder Include="Service\Facades\" />
+    <Folder Include="Service\Log\" />
+    <Folder Include="ViewModel\Common\" />
+  </ItemGroup>
+
+</Project>
