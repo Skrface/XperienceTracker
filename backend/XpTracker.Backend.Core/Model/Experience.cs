@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using XpTracker.Backend.Core.Model.Common;
 
 namespace XpTracker.Backend.Core.Model
 {
-    internal class Experience
+    internal class Experience : AuditableEntity<int>
     {
         /// <summary>
         /// TODO : move to class ?
