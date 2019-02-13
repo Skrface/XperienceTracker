@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using XpTracker.Backend.Core.Model.Common;
-
-namespace XpTracker.Backend.Core.Model
+﻿namespace XpTracker.Backend.Core.ViewModel.Experience
 {
-    internal class Experience : AuditableEntity<int>
+    public class VmExperienceGet
     {
         /// <summary>
         /// TODO : move to class ?
@@ -31,27 +26,27 @@ namespace XpTracker.Backend.Core.Model
         /// <summary>
         /// The languages we has to use during the mission
         /// </summary>
-        public IEnumerable<LanguageCode> Languages { get; set; }
+        public string Languages { get; set; }
 
         /// <summary>
         /// The period we worked on this mission
         /// </summary>
-        public Period Period { get; set; }
+        public string Period { get; set; }
 
         /// <summary>
         /// The real time we spent on this mission
         /// </summary>
-        public RealTimeOfWork RealTimeOfWork { get; set; }
+        public string RealTimeOfWork { get; set; }
 
         /// <summary>
         /// The technologies related to the code
         /// </summary>
-        public IEnumerable<Technology> CodeTechnologies { get; set; }
+        public string CodeTechnologies { get; set; }
 
         /// <summary>
         /// The technologies related to the environment
         /// </summary>
-        public IEnumerable<Technology> EnvironmentTechnologies { get; set; }
+        public string EnvironmentTechnologies { get; set; }
 
         /// <summary>
         /// What was the number of person in the project team
@@ -62,7 +57,7 @@ namespace XpTracker.Backend.Core.Model
         /// What was the roles we had to play during this mission
         /// TODO : move to class ?
         /// </summary>
-        public IEnumerable<string> Roles { get; set; }
+        public string Roles { get; set; }
 
         /// <summary>
         /// Some information about the people management
@@ -77,11 +72,11 @@ namespace XpTracker.Backend.Core.Model
         /// <summary>
         /// The tags are used to find specific experiences by keywords
         /// </summary>
-        public IEnumerable<Tag> Tags { get; set; }
+        public string Tags { get; set; }
 
         /// <summary>
         /// The references represents the persons to contact to verify the experience
         /// </summary>
-        public IEnumerable<Reference> References { get; set; }
+        public string References { get; set; }
     }
 }

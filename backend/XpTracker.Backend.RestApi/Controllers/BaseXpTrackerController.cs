@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using XpTracker.Backend.Core.Service.Log;
 
 namespace XpTracker.Backend.RestApi.Controllers
 {
@@ -7,12 +8,15 @@ namespace XpTracker.Backend.RestApi.Controllers
     /// </summary>
     public class BaseXpTrackerController : ControllerBase
     {
-        /// <summary>
-        /// BaseXpTrackerController constructor
-        /// </summary>
-        public BaseXpTrackerController()
-        {
+        protected readonly IXpTrackerLogger _logger;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger"></param>
+        public BaseXpTrackerController(IXpTrackerLogger logger)
+        {
+            this._logger = logger;
         }
     }
 }

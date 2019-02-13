@@ -5,7 +5,7 @@ namespace XpTracker.Backend.Core.Model
     /// <summary>
     /// A technology represents an area of expertise
     /// </summary>
-    internal class Technologie : AuditableEntity<int>
+    internal class Technology : AuditableEntity<int>
     {
         public string Name { get; set; }
         public TechnologyType TechnologyType { get; set; }

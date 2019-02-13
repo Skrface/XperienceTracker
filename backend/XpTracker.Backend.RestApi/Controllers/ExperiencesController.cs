@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using XpTracker.Backend.Core.Service.Facades;
+using XpTracker.Backend.Core.Service.Log;
+using XpTracker.Backend.Core.ViewModel.Experience;
 
 namespace XpTracker.Backend.RestApi.Controllers
 {
@@ -14,14 +17,48 @@ namespace XpTracker.Backend.RestApi.Controllers
     [Produces("application/json")]
     public class ExperiencesController : BaseXpTrackerController
     {
+        private readonly IFacadeExperienceService _service;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="service"></param>
+        /// <param name="logger"></param>
+        public ExperiencesController(IFacadeExperienceService service, IXpTrackerLogger logger) : base(logger)
+        {
+            this._service = service;
+        }
+
         /// <summary>
         /// Get the list of experiences for the current user
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public async Task<ActionResult<VmExperienceResponseGet>> Get()
         {
-            return new string[] { "experience1", "experience2" };
+           // this._logger.Debug($"RESTAPI:FeedbacksController:Get()");
+            VmExperienceResponseGet result = new VmExperienceResponseGet();
+            try
+            {
+                var data = _service.GetAllForCurrentUser();
+
+                if(data.Any())
+                {
+                    result.Data = data;
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception e)
+            {
+                //this._logger.Error("FeedbacksController::Get:Exception(e)", e);
+                result.Message = e.Message;
+                return StatusCode(500, result);
+            }
+
+            return result;
         }
 
         /// <summary>
