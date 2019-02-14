@@ -7,7 +7,7 @@ namespace XpTracker.Backend.Core.ViewModel.Common
     /// <summary>
     /// Base class for returned payload from the API
     /// </summary>
-    public class VmBase
+    public class VmResponseBase
     {
 #if VERBOSE
         /// <summary>
@@ -28,7 +28,7 @@ namespace XpTracker.Backend.Core.ViewModel.Common
         /// <summary>
         /// Constructor
         /// </summary>
-        public VmBase()
+        public VmResponseBase()
         {
 #if VERBOSE
             Success = true;

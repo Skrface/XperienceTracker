@@ -1,9 +1,26 @@
-﻿namespace XpTracker.Backend.Core.ViewModel.Experience
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using XpTracker.Backend.Core.ViewModel.Common;
+
+namespace XpTracker.Backend.Core.ViewModel.Experience
 {
-    public class VmExperienceGet
+    /// <summary>
+    /// GET experience response payload
+    /// </summary>
+    public class VmExperienceResponsePut : VmResponseBase
     {
-        public int Id { get; set; }
-        public string Truc { get; set; }
+        /// <summary>
+        /// The actual data
+        /// </summary>
+        public List<VmExperience> Data { get; set; }
+    }
+
+    /// <summary>
+    /// A User Experience
+    /// </summary>
+    public class VmExperience
+    {
         /// <summary>
         /// TODO : move to class ?
         /// The title we had during the mission

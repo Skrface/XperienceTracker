@@ -30,17 +30,43 @@ namespace XpTracker.Backend.RestApi.Controllers
         }
 
         /// <summary>
+        /// Create a new Experience for the current user
+        /// </summary>
+        /// <param name="value">A experience to store</param>
+        /// <returns>http status code 200 + message with the created experience</returns>
+        [Produces("application/json", Type = typeof(VmExperienceResponsePut))]
+        [HttpPut]
+        //PUT /api/Favorites
+        public async Task<ActionResult<VmExperienceResponsePut>> Post([FromBody] VmExperienceRequestPost value)
+        {
+            //this._logger.Debug("RESTAPI:ExperiencessController:Post");
+            VmExperienceResponsePut result = new VmExperienceResponsePut();
+            try
+            {
+                result.Data = await _service.Post(value);
+            }
+            catch (Exception e)
+            {
+                //this._logger.Error("FavoritesController::Post:Exception", e);
+                result.Message = e.Message;
+                return StatusCode(500, result);
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Get the list of experiences for the current user
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<VmExperienceResponseGet>> Get()
+        public async Task<ActionResult<VmExperienceResponseGet>> GetAllForCurrentUser()
         {
            // this._logger.Debug($"RESTAPI:FeedbacksController:Get()");
             VmExperienceResponseGet result = new VmExperienceResponseGet();
             try
             {
-                var data = _service.GetAllForCurrentUser();
+                var data = await _service.GetAllForCurrentUserAsync();
 
                 if(data.Any())
                 {

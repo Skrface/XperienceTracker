@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using XpTracker.Backend.Core.Model;
 using XpTracker.Backend.Core.Repo;
 using XpTracker.Backend.Core.Service.Log;
@@ -10,7 +12,8 @@ namespace XpTracker.Backend.Core.Service.BusinessServices
 {
     internal interface IExperienceService
     {
-        List<Experience> GetAllForCurrentUser();
+        Task<List<Experience>> GetAllForCurrentUserAsync();
+        Experience Post(Experience model);
     }
 
     internal class ExperienceService : BusinessService, IExperienceService
@@ -22,9 +25,17 @@ namespace XpTracker.Backend.Core.Service.BusinessServices
             this._expRepo = expRepo;
         }
 
-        public List<Experience> GetAllForCurrentUser()
+        public Experience Post(Experience model)
         {
-            return this._expRepo.GetAll().ToList();
+            this._expRepo.Create(model);
+            this._expRepo.SaveChanges();
+
+            return model;
+        }
+
+        public async Task<List<Experience>> GetAllForCurrentUserAsync()
+        {
+            return await this._expRepo.GetAll().ToListAsync();
         }
     }
 }

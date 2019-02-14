@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using XpTracker.Backend.Core.Model;
 using XpTracker.Backend.Core.Service.BusinessServices;
 using XpTracker.Backend.Core.ViewModel.Experience;
@@ -10,7 +11,8 @@ namespace XpTracker.Backend.Core.Service.Facades
 {
     public interface IFacadeExperienceService
     {
-        List<VmExperienceGet> GetAllForCurrentUser();
+        Task<List<VmExperienceGet>> GetAllForCurrentUserAsync();
+        Task<List<VmExperience>> Post(VmExperienceRequestPost value);
     }
 
     internal class FacadeExperienceService : IFacadeExperienceService
@@ -24,9 +26,18 @@ namespace XpTracker.Backend.Core.Service.Facades
             this._service = service;
         }
 
-        public List<VmExperienceGet> GetAllForCurrentUser()
+        public async Task<List<VmExperience>> Post(VmExperienceRequestPost value)
         {
-            var data = this._service.GetAllForCurrentUser();
+            var model = _mapper.Map<VmExperienceRequestPost, Experience>(value);
+            this._service.Post(model);
+            // Send the list of experiences to the frontend
+            var data = await this._service.GetAllForCurrentUserAsync();
+            return _mapper.Map<List<Experience>, List<VmExperience>>(data);
+        }
+
+        public async Task<List<VmExperienceGet>> GetAllForCurrentUserAsync()
+        {
+            var data = await this._service.GetAllForCurrentUserAsync();
             return _mapper.Map<List<Experience>, List<VmExperienceGet>>(data);
         }
     }

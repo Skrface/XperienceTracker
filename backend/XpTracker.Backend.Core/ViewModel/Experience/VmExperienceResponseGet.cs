@@ -8,7 +8,7 @@ namespace XpTracker.Backend.Core.ViewModel.Experience
     /// <summary>
     /// Experience GET endpoint payload
     /// </summary>
-    public class VmExperienceResponseGet : VmBase
+    public class VmExperienceResponseGet : VmResponseBase
     {
         /// <summary>
         /// The actual data
