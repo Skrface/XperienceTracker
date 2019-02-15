@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XpTracker.Backend.RestApi</name>
+    </assembly>
+    <members>
+        <member name="T:XpTracker.Backend.RestApi.Controllers.BaseXpTrackerController">
+            <summary>
+            Custom base controller
+            </summary>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Controllers.BaseXpTrackerController.#ctor(XpTracker.Backend.Core.Service.Log.IXpTrackerLogger)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="T:XpTracker.Backend.RestApi.Controllers.ExperiencesController">
+            <summary>
+            Experience endpoint
+            </summary>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Controllers.ExperiencesController.#ctor(XpTracker.Backend.Core.Service.Facades.IFacadeExperienceService,XpTracker.Backend.Core.Service.Log.IXpTrackerLogger)">
+            <summary>
+            
+            </summary>
+            <param name="service"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Controllers.ExperiencesController.Post(XpTracker.Backend.Core.ViewModel.Experience.VmExperienceRequestPost)">
+            <summary>
+            Create a new Experience for the current user
+            </summary>
+            <param name="value">A experience to store</param>
+            <returns>http status code 200 + message with the created experience</returns>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Controllers.ExperiencesController.GetAllForCurrentUser">
+            <summary>
+            Get the list of experiences for the current user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Controllers.ExperiencesController.Get(System.Int32)">
+            <summary>
+            Get an experience of the current user by its id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Controllers.ExperiencesController.Create(System.String)">
+            <summary>
+            Add a new experience associated the current user
+            </summary>
+            <param name="experience"></param>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Controllers.ExperiencesController.Edit(System.String)">
+            <summary>
+            Update an experience associated the current user
+            </summary>
+            <param name="experience"></param>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Controllers.ExperiencesController.Delete(System.Int32)">
+            <summary>
+            Delete an experience
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:XpTracker.Backend.RestApi.Extensions.SwaggerServiceExtensions">
+            <summary>
+            Swagger stuff and configuration
+            </summary>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Extensions.SwaggerServiceExtensions.AddSwaggerDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection,XpTracker.Backend.Core.Config.FeatureFlags)">
+            <summary>
+            service injection
+            </summary>
+            <param name="services"></param>
+            <param name="features"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Extensions.SwaggerServiceExtensions.UseSwaggerDocumentation(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            swagger configuration
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Program.RunSeedingAsync(Microsoft.AspNetCore.Hosting.IWebHost)">
+            <summary>
+            Seed the database    
+            </summary>
+            <param name="host"></param>
+        </member>
+        <member name="T:XpTracker.Backend.RestApi.Startup">
+            <summary>
+            startup class
+            </summary>
+        </member>
+        <member name="P:XpTracker.Backend.RestApi.Startup.Configuration">
+            <summary>
+            aspnetcore configuration
+            </summary>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            startup constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:XpTracker.Backend.RestApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>

@@ -6,6 +6,6 @@ namespace XpTracker.Backend.Core.Config
 {
     public class ConnectionStrings
     {
-        public string MarsLoopDbConection { get; set; }
+        public string XpTrackerDbConection { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using XpTracker.Backend.Core.Config;
 using XpTracker.Backend.Core.DataMapper;
 using XpTracker.Backend.Core.Model;
 using XpTracker.Backend.Core.Model.Common;
@@ -21,8 +22,11 @@ namespace XpTracker.Backend.Core.Repo.Common
 
     public class XpTrackerDbContext : DbContext, IXpTrackerDbContext
     {
+        private FeatureFlags _features;
+
         public XpTrackerDbContext(DbContextOptions<XpTrackerDbContext> options, IConfiguration configuration) : base(options)
         {
+            this._features = configuration.GetSection("FeatureFlags").Get<FeatureFlags>();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

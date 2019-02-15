@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using XpTracker.Backend.Core.DI;
 using XpTracker.Backend.Core.Service.Log;
 using Xunit;
 
@@ -22,9 +23,9 @@ namespace XpTracker.Backend.Tests
                 .Build();
 
             _serviceProvider = serviceCollection
-                //.AddMarsLoopCoreServices(config)
-                //.AddMarsLoopAnonymousServices(config)
-                //.AddMarsLoopFakeDbServices(config)
+                .AddXpTrackerCoreServices(config)
+                .AddXpTrackerAnonymousServices(config)
+                .AddXpTrackerFakeDbServices(config)
                 .BuildServiceProvider();
 
             this._logger = _serviceProvider.GetService<IXpTrackerLogger>() as IXpTrackerLogger;

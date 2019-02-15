@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using XpTracker.Backend.Core.Config;
+using XpTracker.Backend.Core.DataMapper;
+using XpTracker.Backend.Core.Helper;
 using XpTracker.Backend.Core.Repo;
 using XpTracker.Backend.Core.Repo.Common;
 using XpTracker.Backend.Core.Service.BusinessServices;
@@ -19,11 +21,11 @@ namespace XpTracker.Backend.Core.DI
     public static class IServiceCollectionExtension
     {
         /// <summary>
-        /// mars loop dependancy injection module
+        /// experience tracker dependancy injection module
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddMarsLoopCoreServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddXpTrackerCoreServices(this IServiceCollection services, IConfiguration configuration)
         {
 
             var config = new AutoMapper.MapperConfiguration(cfg =>
@@ -39,7 +41,9 @@ namespace XpTracker.Backend.Core.DI
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddDbContext<XpTrackerDbContext>(options =>
+            services
+                .AddEntityFrameworkNpgsql()
+                .AddDbContext<XpTrackerDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("XpTrackerDbConnection"))
             );
 
@@ -98,12 +102,9 @@ namespace XpTracker.Backend.Core.DI
 
             services.AddScoped<IXpTrackerLogger, XpTrackerLogger>();
 
+            services.AddTransient<XpTrackerSeeder>();
 
-            //services.AddTransient<MarsLoopSeeder>();
-
-            //services.AddSingleton<LoopMemoryCache>();
-
-
+            //services.AddSingleton<XpTrackerMemoryCache>();
 
 
             return services;
