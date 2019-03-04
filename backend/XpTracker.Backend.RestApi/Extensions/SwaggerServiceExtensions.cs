@@ -54,6 +54,10 @@ namespace XpTracker.Backend.RestApi.Extensions
                     });
                     c.AddSecurityRequirement(security);
                 }
+
+                // This line is a workaround because for swagger, actions require unique name etc etc
+                // https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/390
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
 
             return services;
@@ -72,7 +76,7 @@ namespace XpTracker.Backend.RestApi.Extensions
             {
                 c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "Experience Tracker API v1.0");
 
-                c.DocExpansion(DocExpansion.None);
+                //c.DocExpansion(DocExpansion.None);
             });
 
             return app;

@@ -15,12 +15,9 @@ namespace XpTracker.Backend.Core.Fakes
     {
         List<Experience> otherInMemoryStorage = null;
 
-        public FakeExperienceRepo(IExperienceRepo experienceInquiry)
+        public FakeExperienceRepo()
         {
-            if (experienceInquiry is FakeExperienceRepo repo)
-            {
-                this.otherInMemoryStorage = FakeExperienceRepo._inMemoryStorage;
-            }
+            
         }
 
         public override IQueryable<Experience> FindBy(Expression<Func<Experience, bool>> predicate)
