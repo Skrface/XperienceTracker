@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using XpTracker.Backend.Core;
 using XpTracker.Backend.Core.Config;
 using XpTracker.Backend.Core.DI;
+using XpTracker.Backend.Core.Repo.Common;
 using XpTracker.Backend.RestApi.Extensions;
 
 namespace XpTracker.Backend.RestApi
@@ -72,7 +74,7 @@ namespace XpTracker.Backend.RestApi
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, XpTrackerDbContext dbContext)
         {
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -81,6 +83,8 @@ namespace XpTracker.Backend.RestApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwaggerDocumentation();
+
+                dbContext.Seed();
             }
             else
             {
@@ -93,6 +97,7 @@ namespace XpTracker.Backend.RestApi
             //app.UseAuthorization();            
 
             app.UseMvc();
+
         }
     }
 }

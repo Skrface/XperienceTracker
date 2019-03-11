@@ -29,6 +29,8 @@ namespace XpTracker.Backend.Core.Repo.Common
             this._features = configuration.GetSection("FeatureFlags").Get<FeatureFlags>();
         }
 
+        internal DbSet<Experience> Experiences { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
