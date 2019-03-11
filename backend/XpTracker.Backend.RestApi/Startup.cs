@@ -43,6 +43,15 @@ namespace XpTracker.Backend.RestApi
 
             services.ConfigureIISIntegration();
 
+            if (features.IsInMemoryDb)
+            {
+                services.AddXpTrackerFakeDbServices(Configuration);
+            }
+            if (features.IsAnonymous)
+            {
+                services.AddXpTrackerAnonymousServices(Configuration);
+            }
+
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddNewtonsoftJson(options =>
@@ -81,7 +90,7 @@ namespace XpTracker.Backend.RestApi
 
             app.UseCors("CorsPolicy");
 
-            //app.UseAuthorization();
+            //app.UseAuthorization();            
 
             app.UseMvc();
         }

@@ -36,7 +36,6 @@ namespace XpTracker.Backend.RestApi.Controllers
         /// <returns>http status code 200 + message with the created experience</returns>
         [Produces("application/json", Type = typeof(VmExperienceResponsePut))]
         [HttpPut]
-        //PUT /api/Favorites
         public async Task<ActionResult<VmExperienceResponsePut>> Post([FromBody] VmExperienceRequestPost value)
         {
             //this._logger.Debug("RESTAPI:ExperiencessController:Post");
@@ -59,7 +58,9 @@ namespace XpTracker.Backend.RestApi.Controllers
         /// Get the list of experiences for the current user
         /// </summary>
         /// <returns></returns>
+        [Produces("application/json", Type = typeof(VmExperienceResponseGet))]
         [HttpGet]
+        //[Route("reset")]
         public async Task<ActionResult<VmExperienceResponseGet>> GetAllForCurrentUser()
         {
            // this._logger.Debug($"RESTAPI:FeedbacksController:Get()");

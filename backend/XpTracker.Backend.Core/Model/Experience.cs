@@ -31,7 +31,7 @@ namespace XpTracker.Backend.Core.Model
         /// <summary>
         /// The languages we has to use during the mission
         /// </summary>
-        public IEnumerable<LanguageCode> Languages { get; set; }
+        //public IEnumerable<LanguageCode> Languages { get; set; }
 
         /// <summary>
         /// The period we worked on this mission
@@ -62,7 +62,7 @@ namespace XpTracker.Backend.Core.Model
         /// What was the roles we had to play during this mission
         /// TODO : move to class ?
         /// </summary>
-        public IEnumerable<string> Roles { get; set; }
+        //public IEnumerable<string> Roles { get; set; }
 
         /// <summary>
         /// Some information about the people management
